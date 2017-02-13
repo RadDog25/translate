@@ -1,12 +1,12 @@
 ##example API call
-##https://translation.googleapis.com/language/translate/v2?key=                      &source=en&target=de&q=Hello%20world&q=My%20name%20is%20Jeff
+##https://translation.googleapis.com/language/translate/v2?key    key goes here         &source=en&target=de&q=Hello%20world&q=My%20name%20is%20Jeff
 
 from urllib import request
 import json, html
 from gtts import gTTS
 
 ##this is my google translate key
-myKey = ##put your google translate API key here
+myKey = "google api key goes here"
 
 ##phrases is a list of phrases to translate
 def text(phrases, source, target):
@@ -35,9 +35,10 @@ def text(phrases, source, target):
     ##return our results
     return results
 
-def audio(phrases, source, target, path):
-    ##first get translation for text function
-    results = text(phrases, source, target)
+def audio(phrases, source, target, path, results=[]):
+    ##first get translation for text function if no results variable is passed
+    if not results:
+        results = text(phrases, source, target)
 
     ##go through each val in results
     for result in results:
